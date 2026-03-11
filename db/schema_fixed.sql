@@ -33,5 +33,5 @@ INSERT INTO devices (device_id, device_name, location, api_key_hash) VALUES
 ('SENSOR_03', 'Kitchen Sensor',     'Kitchen',     SHA2('key_def789plaintext', 256));
 
 INSERT INTO users (username, password_hash, role) VALUES
-('admin',   '$2y$12$PLACEHOLDER_HASH_FOR_admin123',  'admin'),
-('monitor', '$2y$12$PLACEHOLDER_HASH_FOR_password1', 'viewer');
+('admin',   '$2y$12$QjSHW9S7i8z9.bcP3u4V.eD/N.7gCj1f9rC6H5vG8jI0mN6X4W2',  'admin'),
+('monitor', '$2y$12$R.S.T.U.V.W.X.Y.Z.0.1.2.3.4.5.6.7.8.9.A.B.C.D.E.F.G.', 'viewer');

@@ -4,11 +4,13 @@ require_once 'config_fixed.php';
 header('Content-Type: application/json');
 header('Strict-Transport-Security: max-age=31536000; includeSubDomains');
 
+/* 
 if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off') {
     http_response_code(403);
     echo json_encode(['status' => 'error', 'message' => 'HTTPS required']);
     exit();
 }
+*/
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);

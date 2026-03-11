@@ -1,6 +1,6 @@
 <?php
 define('DB_HOST', getenv('IOT_DB_HOST') ?: 'localhost');
-define('DB_USER', getenv('IOT_DB_USER') ?: 'iot_app_user');
+define('DB_USER', getenv('IOT_DB_USER') ?: 'root');
 define('DB_PASS', getenv('IOT_DB_PASS') ?: '');
 define('DB_NAME', getenv('IOT_DB_NAME') ?: 'iot_sensors_fixed');
 
