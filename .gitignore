@@ -1,0 +1,12 @@
+# Ignore all Markdown files
+*.md
+
+# Except for README.md
+!README.md
+
+# Common ignores
+__pycache__/
+*.py[cod]
+.vscode/
+.idea/
+.DS_Store
