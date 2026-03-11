@@ -36,12 +36,15 @@ iot_rest/
 ├── fixed/
 │   └── api/                        ← FIXED REST service
 │       ├── config_fixed.php        ← Database connection (environment variables)
-│       ├── sensors_fixed.php       ← Secure endpoint (prepared statements + HTTPS)
-│       └── login_fixed.php         ← Secure login (bcrypt + HMAC token)
+│       ├── sensors_fixed.php       ← Secure endpoint (prepared statements)
+│       ├── login_fixed.php         ← Secure login (bcrypt + HMAC token)
+│       └── dashboard_fixed.php     ← SECURE HTML admin dashboard
 │
 └── client/
-    ├── simulate_iot.py             ← Python IoT device simulator
-    └── attack_sqli.py              ← SQL Injection attack demonstration script
+    ├── simulate_iot.py             ← Python IoT device simulator (Vulnerable)
+    ├── simulate_iot_fixed.py       ← Python IoT device simulator (Secure)
+    ├── attack_sqli.py              ← SQL Injection attack (Exploitation)
+    └── attack_sqli_fixed.py        ← SQL Injection attack (Defensive test)
 ```
 
 ---
@@ -159,13 +162,26 @@ http://localhost/iot_rest/api/dashboard.php
 
 Type `SENSOR_01` in the search box and click **Search** to see live readings.
 
-### Step 8 — Run the SQL Injection Attack Demo
+### Step 9 — Setup and Test the FIXED Version
 
-Open a second Command Prompt:
-```
-cd "C:\Users\thiga\Desktop\REST service\iot_rest\client"
-python attack_sqli.py
-```
+1. **Create the Secure Database**:
+   - In phpMyAdmin, go to the **SQL** tab.
+   - Run the contents of `db/schema_fixed.sql`.
+   - This creates the `iot_sensors_fixed` database with hashed passwords.
+
+2. **Run Secure Simulator**:
+   ```powershell
+   python client/simulate_iot_fixed.py
+   ```
+
+3. **Open Secure Dashboard**:
+   - URL: `http://localhost/iot_rest/fixed/api/dashboard_fixed.php`
+
+4. **Run Defensive Attack Test**:
+   - This script proves that the SQLi attacks fail on the fixed API:
+   ```powershell
+   python client/attack_sqli_fixed.py
+   ```
 
 ---
 
@@ -404,11 +420,17 @@ curl -X POST http://localhost/iot_rest/api/login.php `
      -H "Content-Type: application/json" `
      -d '{"username":"admin","password":"admin123"}'
 
+# --- VULNERABLE VERSION ---
 # Run simulator
 python client/simulate_iot.py
-
 # Run attack demo
 python client/attack_sqli.py
+
+# --- FIXED VERSION ---
+# Run secure simulator
+python client/simulate_iot_fixed.py
+# Run defensive test
+python client/attack_sqli_fixed.py
 ```
 
 ---
@@ -424,7 +446,7 @@ python client/attack_sqli.py
 
 ---
 
-## Author
+## Author:** R.Thigamparan
 
 **Module:** 7026CEM – Security in Computing
 **Assessment:** CW2 Piece 2
