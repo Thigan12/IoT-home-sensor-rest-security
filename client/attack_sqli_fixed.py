@@ -25,13 +25,13 @@ def send_payload(label, payload):
             print(f"[RAW RESPONSE]: {response.text}")
 
         if response.status_code == 400:
-            print("\nRESULT: 🛡️ BLOCKED - Input rejected by Regex validation.")
+            print("\nRESULT:  BLOCKED - Input rejected by Regex validation.")
         elif response.status_code == 200:
             data = response.json()
             if data['count'] == 0:
-                print("\nRESULT: 🛡️ SAFE - Prepared Statement treated the attack as a literal string.")
+                print("\nRESULT: SAFE - Prepared Statement treated the attack as a literal string.")
             else:
-                print("\nRESULT: ⚠️ VULNERABLE - Unexpected data returned.")
+                print("\nRESULT:  VULNERABLE - Unexpected data returned.")
                 
     except Exception as e:
         print(f"[ERROR] {e}")
