@@ -1,17 +1,6 @@
 <?php
 require_once 'config_fixed.php';
 
-/* 
-if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off') {
-    http_response_code(403);
-    header('Content-Type: application/json');
-    echo json_encode([
-        'status'  => 'error',
-        'message' => 'HTTPS required. Plain HTTP connections are not permitted.'
-    ]);
-    exit();
-}
-*/
 
 header('Content-Type: application/json');
 header('Strict-Transport-Security: max-age=31536000; includeSubDomains');

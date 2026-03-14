@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!-- ============================================================
-     dashboard_fixed.php – SECURE dashboard to view IoT readings
-     7026CEM CW2 Piece 2 – IoT Home Sensor REST Service
-     ============================================================ -->
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">

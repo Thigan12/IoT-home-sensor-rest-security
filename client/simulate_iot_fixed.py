@@ -3,7 +3,6 @@ import random
 import time
 from datetime import datetime
 
-# Points to the FIXED version of the API
 BASE_URL = "http://localhost/iot_rest/fixed/api/sensors_fixed.php"
 
 DEVICES = [

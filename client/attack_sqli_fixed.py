@@ -1,7 +1,6 @@
 import requests
 import json
 
-# TARGETING THE SECURE API
 BASE_URL = "http://localhost/iot_rest/fixed/api/sensors_fixed.php"
 
 
@@ -16,7 +15,6 @@ def send_payload(label, payload):
         
         print(f"[HTTP {response.status_code}]")
         
-        # If response is JSON, print it
         try:
             data = response.json()
             print(f"[RESPONSE DATA]:")
@@ -43,13 +41,11 @@ def main():
     print(f"  Target: {BASE_URL}")
     print("=" * 60)
 
-    # 1. Test Regex Validation (the fixed API rejects special characters immediately)
     send_payload(
         "Attempting SQLi (Blocked by Regex)",
         "SENSOR_01' OR '1'='1"
     )
 
-    # 2. Test UNION Attack
     send_payload(
         "Attempting UNION attack (Blocked by Prepared Statements)",
         "nonexistent' UNION SELECT id, username, password, role, created_at FROM users-- "

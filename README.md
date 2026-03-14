@@ -1,7 +1,6 @@
-# 7026CEM CW2 – Piece 2: IoT Home Sensor REST Service
+# IoT Home Sensor REST Service
 
-A home IoT monitoring REST API built with PHP and MySQL, demonstrating two security
-vulnerabilities and their fixes as part of the 7026CEM Security in Computing coursework.
+A home IoT monitoring REST API built with PHP and MySQL, demonstrating common security vulnerabilities and their fixes.
 
 ---
 
@@ -182,16 +181,6 @@ Type `SENSOR_01` in the search box and click **Search** to see live readings.
    ```powershell
    python client/attack_sqli_fixed.py
    ```
-
----
-
-## Setup Instructions (macOS)
-
-1. Download XAMPP for macOS from https://www.apachefriends.org
-2. Install to `/Applications/XAMPP/`
-3. Start Apache and MySQL via XAMPP Manager
-4. Copy `iot_rest` to `/Applications/XAMPP/htdocs/iot_rest/`
-5. Follow Steps 4–8 above using Terminal instead of Command Prompt
 
 ---
 
@@ -389,23 +378,6 @@ $sql = "SELECT * FROM sensor_readings
 
 ---
 
-## Screenshots Required (for Assignment)
-
-| Figure | What to Capture |
-|---|---|
-| B1 | XAMPP Control Panel — Apache and MySQL both green/running |
-| B2 | phpMyAdmin — `users` table showing plain-text passwords |
-| B3 | phpMyAdmin — `sensor_readings` table with multiple rows of data |
-| B4 | Browser — Normal GET request returning SENSOR_01 data in JSON |
-| B5 | Browser — SQL Injection Boolean bypass returning all devices' rows |
-| B6 | Browser — UNION attack returning usernames and passwords in JSON |
-| B7 | Terminal — `simulate_iot.py` running with ✓ ticks for each sensor |
-| B8 | Terminal — `attack_sqli.py` full output showing all 4 attacks |
-| B9 | Browser — `dashboard.php` showing the HTML table with readings |
-| B10 | Code editor — `sensors_fixed.php` showing `prepare()` and `bind_param()` lines |
-
----
-
 ## Quick Reference — Test Commands
 
 ```powershell
@@ -432,22 +404,3 @@ python client/simulate_iot_fixed.py
 # Run defensive test
 python client/attack_sqli_fixed.py
 ```
-
----
-
-## OWASP IoT Top 10 2018 References
-
-| # | Category | Relevance to This Project |
-|---|---|---|
-| I2 | Insecure Network Services | No rate-limiting on login; forged tokens accepted |
-| I3 | Insecure Ecosystem Interfaces | Plain HTTP; no auth on GET endpoint |
-| I6 | Insecure Access Controls | No role-based access enforcement |
-| I7 | Insecure Data Transfer and Storage | SQL Injection; plain-text passwords and API keys |
-
----
-
-## Author:** R.Thigamparan
-
-**Module:** 7026CEM – Security in Computing
-**Assessment:** CW2 Piece 2
-**Topic:** REST API Security — IoT Home Sensor Monitoring System
